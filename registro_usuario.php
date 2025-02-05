@@ -46,8 +46,8 @@ if (isset($_POST["apellido01_usuario"])) {
         <input type="text" name="nombre_usuario" id="id_01" required placeholder="Nombre(s)" autocomplete="off">
         <input type="text" name="apellido01_usuario" id="id_02" required placeholder="Primer apellido" autocomplete="off">
         <input type="text" name="apellido02_usuario" id="" placeholder="Segundo apellido">
-        <input type="text" name="username" id="" required placeholder="ingrese un nombre de usuario">
-        <input type="password" name="password" id="pass" required placeholder="password">
+        <input type="text" name="username" id="" required placeholder="Ingrese un nombre de usuario">
+        <input type="password" name="password" id="pass" required placeholder="Password">
         <input type="submit" value="Registrar">        
         
         <?php if (isset($error)) {

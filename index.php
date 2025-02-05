@@ -54,7 +54,7 @@ if (isset($_POST["username"])) {
 
 <body>
     
-    <h1>BIENVENIDO A LA WEB DE TAREAS</h1>
+    <h1>GESTIÓN DE TAREAS X TASK</h1> <img src="imagen\logo.png" alt=""   width="120" height="100" flexdirection="row">
 
     <p>En esta web podrás realizar las siguientes tareas:</p>
     <ul>
@@ -81,9 +81,9 @@ if (isset($_POST["username"])) {
     </form>
 
     <h2>¿No tienes una cuenta?</h2>
-    <p>Regístrate <a href="registro_usuario.php">aquí</a></p>
+    <p>Regístrate <a href="registro_usuario.php">aquí.</a></p>
+
+    <footer>X TASK APP © 2025 Todos los derechos reservados. </footer>
 </body>
-
-
 
 </html>
