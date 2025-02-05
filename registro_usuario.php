@@ -1,28 +1,37 @@
 <?php
+session_start();
+session_unset(); // Eliminar todas las variables de sesión
+session_destroy(); // Destruir la sesión
 
 if (isset($_POST["apellido01_usuario"])) {
-    try {
-        include("conexiondb.php");
-        $nombre = $_POST["nombre_usuario"];
-        $apellido01 = $_POST["apellido01_usuario"];
-        $apellido02 = $_POST["apellido02_usuario"];
-        $apellidos = $apellido01 . " " . $apellido02;
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        $password_encriptado = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO usuarios (nombre,apellidos,username,password,password_encriptado) 
-                VALUES (:nombre,:apellidos,:username,:password,:password_encriptado)";
-        $stm = $conexion->prepare($sql);
-        $stm->bindParam(":nombre", $nombre);
-        $stm->bindParam(":apellidos", $apellidos);
-        $stm->bindParam(":username", $username);
-        $stm->bindParam(":password", $password);
-        $stm->bindParam(":password_encriptado", $password_encriptado);
-        $stm->execute();
-        $conexion = null;
-        header("Location: index.php");
-    } catch (Exception $e) {
-        $error = "Error al registrar usuario." . $e->getMessage();
+    if ($_POST["password"] != $_POST["repassword"]) {
+        $error = "Las contraseñas no coinciden";
+        //exit();
+    }
+    else {
+        try {
+            include("conexiondb.php");
+            $nombre = $_POST["nombre_usuario"];
+            $apellido01 = $_POST["apellido01_usuario"];
+            $apellido02 = $_POST["apellido02_usuario"];
+            $apellidos = $apellido01 . " " . $apellido02;
+            $username = $_POST["username"];
+            $password = $_POST["password"];
+            $password_encriptado = password_hash($password, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO usuarios (nombre,apellidos,username,password,password_encriptado) 
+                    VALUES (:nombre,:apellidos,:username,:password,:password_encriptado)";
+            $stm = $conexion->prepare($sql);
+            $stm->bindParam(":nombre", $nombre);
+            $stm->bindParam(":apellidos", $apellidos);
+            $stm->bindParam(":username", $username);
+            $stm->bindParam(":password", $password);
+            $stm->bindParam(":password_encriptado", $password_encriptado);
+            $stm->execute();
+            $conexion = null;
+            header("Location: index.php");
+        } catch (Exception $e) {
+            $error = "Error al registrar usuario. <br>" . $e->getMessage();
+        }
     }
 }
 ?>
@@ -48,6 +57,9 @@ if (isset($_POST["apellido01_usuario"])) {
         <input type="text" name="apellido02_usuario" id="" placeholder="Segundo apellido">
         <input type="text" name="username" id="" required placeholder="ingrese un nombre de usuario">
         <input type="password" name="password" id="pass" required placeholder="password">
+        <label for="password">Introduce de nuevo la Password</label>
+        <input  type="password" name="repassword" id="id_03">
+        <span id="msg">*Las contraseñas deben ser iguales</span>
         <input type="submit" value="Registrar">        
         
         <?php if (isset($error)) {
