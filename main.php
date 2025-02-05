@@ -33,15 +33,14 @@ $result = $conexion->query($sql);
 <body>
     
     <h1>usuario: 
-        <?php   echo $_SESSION["usuario_nombre"]; 
-                echo $_SESSION["usuario_apellidos"];
+        <?php   echo $_SESSION["usuario_nombre"] . " " . $_SESSION["usuario_apellidos"];
         ?>
     </h1>
     
     <section class="contenedorPrincipal">
             <h3>Listado incidencias</h3>
             <div class="incidencias">
-                <form action="nueva_incidencia.php" method="post" id="formIncidencias">
+                <form action="editar_usuario.php" method="post" id="formIncidencias">
                     <label for="fecha">Fecha</label>
                     <input type="date" name="fecha" id="fecha" value="">
                     <label for="descripcion">Descripcion</label>
@@ -53,8 +52,8 @@ $result = $conexion->query($sql);
                 <table id="tablaIncidencias">
                     <thead>
                         <th>Id</th>
-                        <th>Fecha</th>
-                        <th>Descripcion</th>
+                        <th>fecha</th>
+                        <th>Título de la tarea</th>
                         <th>Operaciones</th>
                     </thead>
                     <tbody id="tbodyIncidencias">
@@ -64,6 +63,7 @@ $result = $conexion->query($sql);
                             <td>".$row['usuarios_id']."</td>
                             <td>".$row['fecha_creacion']."</td>
                             <td>".$row['titulo']."</td>
+                            <td> ver | editar | eliminar</td>
                             <td>
                                 <a href='borrar_incidencia.php?idincidencia=".$row['tareas_id']."'><i class='fa-solid fa-trash'></i></a>
                                 <a href='editar_incidencia.php?idincidencia=".$row['tareas_id']."'<i class='fa-solid fa-pen-to-square'></i></a>

@@ -9,14 +9,18 @@ if (isset($_POST["titulo"])) {
             
             $titulo = $_POST["titulo"];
             echo $titulo;
+            echo "<br>";
             $decripcion = $_POST["descripcion"];
             echo $decripcion;
+            echo "<br>";
             $usuarios_id = $_SESSION['usuario_id'];
             echo $usuarios_id;
+            echo "<br>";
             $estado = 1;
             echo $estado;
+            echo "<br>";
             //$fecha_local = $_SESSION['fecha_local'];
-            $sql = "INSERT INTO tareas (titulo,descripcion,usuario_id,estado) 
+            $sql = "INSERT INTO tareas (titulo,descripcion,usuarios_id,estado) 
                     VALUES (:t,:d,:u,:e)";
                    // INSERT INTO Tareas (usuarios_id, titulo, descripcion) VALUES (32, 'ttttt', 'dddd');
             $stm = $conexion->prepare($sql);
@@ -29,9 +33,10 @@ if (isset($_POST["titulo"])) {
             $stm->execute();
             echo "tarea guardada";
             $conexion = null;
-            header("Location: main.php");
+            //header("Location: main.php");
         } catch (Exception $e) {
             $error = "ERROR. <br>" . $e->getMessage();
+            echo $error;
         }
     }
 
