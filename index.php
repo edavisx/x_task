@@ -73,6 +73,8 @@ if (isset($_POST["username"])) {
 
     <h2>¿No tienes una cuenta?</h2>
     <p>Regístrate <a href="registro_usuario.php">aquí</a></p>
+
+    
 </body>
 
 
