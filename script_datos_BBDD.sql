@@ -1,0 +1,46 @@
+-- Insertar registros
+INSERT INTO Usuarios (username, Nombre, Apellidos, password) VALUES
+('AntGar', 'Antonio', 'Garcia', 'pass1'),
+('MarGon', 'Maria', 'Gonzalez', 'pass2'),
+('JosMar', 'Jose', 'Martinez', 'pass3'),
+('AnaHer', 'Ana', 'Hernandez', 'pass4'),
+('MigDia', 'Miguel', 'Diaz', 'pass5'),
+('CarLop', 'Carlos', 'Lopez', 'pass6'),
+('LucRod', 'Lucia', 'Rodriguez', 'pass7'),
+('PedFer', 'Pedro', 'Fernandez', 'pass8'),
+('JuaSan', 'Juan', 'Sanchez', 'pass9'),
+('SarPer', 'Sara', 'Perez', 'pass10');
+
+
+-- Insertar registros en la tabla Tareas
+INSERT INTO Tareas (titulo, descripcion, fecha, username) VALUES
+('Revisión del proyecto', 'Revisión detallada del proyecto final para presentación', '2023-02-04 10:30:00', 'AntGar'),
+('Planificación de tareas', 'Organización y planificación de las tareas del mes', '2023-02-05 15:45:00', 'MarGon'),
+('Actualización de documentos', 'Actualizar todos los documentos de la empresa', '2023-02-06 09:00:00', 'JosMar'),
+('Reunión con el equipo', 'Reunión semanal con el equipo para revisar avances', '2023-02-07 11:00:00', 'AnaHer'),
+('Desarrollo de software', 'Desarrollar nueva funcionalidad para la aplicación web', '2023-02-08 14:30:00', 'MigDia'),
+('Revisión de código', 'Revisar y aprobar el código del nuevo módulo', '2023-02-09 16:00:00', 'CarLop'),
+('Entrenamiento del personal', 'Entrenamiento del nuevo personal en las herramientas', '2023-02-10 13:00:00', 'LucRod'),
+('Reunión con cliente', 'Reunión para discutir los requerimientos del cliente', '2023-02-11 10:00:00', 'PedFer'),
+('Pruebas de integración', 'Realizar pruebas de integración en el sistema', '2023-02-12 09:30:00', 'JuaSan'),
+('Documentación de procesos', 'Documentar los nuevos procesos implementados', '2023-02-13 14:00:00', 'SarPer'),
+('Análisis de datos', 'Analizar los datos de ventas del último trimestre', '2023-02-14 15:00:00', 'AntGar'),
+('Presentación de resultados', 'Preparar presentación de resultados para la junta', '2023-02-15 11:30:00', 'MarGon'),
+('Desarrollo de informes', 'Desarrollar informes mensuales de rendimiento', '2023-02-16 10:45:00', 'JosMar'),
+('Optimización de base de datos', 'Optimizar las consultas de la base de datos', '2023-02-17 12:15:00', 'AnaHer'),
+('Actualización de la web', 'Actualizar el contenido del sitio web de la empresa', '2023-02-18 14:45:00', 'MigDia'),
+('Evaluación de rendimiento', 'Evaluar el rendimiento del equipo en el último mes', '2023-02-19 16:30:00', 'CarLop'),
+('Implementación de nuevas tecnologías', 'Implementar nuevas tecnologías en el proceso', '2023-02-20 13:15:00', 'LucRod'),
+('Mantenimiento de servidores', 'Realizar mantenimiento preventivo de los servidores', '2023-02-21 11:45:00', 'PedFer'),
+('Capacitación en nuevas herramientas', 'Capacitar al equipo en las nuevas herramientas', '2023-02-22 10:00:00', 'JuaSan'),
+('Auditoría interna', 'Realizar una auditoría interna de los procesos', '2023-02-23 09:15:00', 'SarPer'),
+('Planificación estratégica', 'Planificar la estrategia para el próximo trimestre', '2023-02-24 15:45:00', 'AntGar'),
+('Reunión con proveedores', 'Reunión para negociar con los nuevos proveedores', '2023-02-25 11:00:00', 'MarGon'),
+('Implementación de mejoras', 'Implementar las mejoras propuestas en la reunión', '2023-02-26 14:30:00', 'JosMar'),
+('Revisión de políticas', 'Revisar y actualizar las políticas de la empresa', '2023-02-27 10:30:00', 'AnaHer'),
+('Evaluación de software', 'Evaluar nuevas soluciones de software para el equipo', '2023-02-28 09:45:00', 'MigDia'),
+('Análisis de mercado', 'Realizar análisis del mercado y la competencia', '2023-03-01 13:00:00', 'CarLop'),
+('Seguimiento de clientes', 'Realizar seguimiento a los clientes clave', '2023-03-02 14:15:00', 'LucRod'),
+('Monitoreo de redes sociales', 'Monitorear las menciones de la empresa en redes sociales', '2023-03-03 11:30:00', 'PedFer'),
+('Revisión de contratos', 'Revisar y negociar los contratos con los clientes', '2023-03-04 16:00:00', 'JuaSan'),
+('Actualización del software', 'Actualizar el software de gestión interna', '2023-03-05 12:45:00', 'SarPer');

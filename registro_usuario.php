@@ -68,7 +68,7 @@ if (isset($_POST["apellido01_usuario"])) {
         ?>
     </form>
 
-    <footer>
+<footer>
     <p> <a href="index.php">HOME</a> </p>
 </footer>
 
