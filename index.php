@@ -1,11 +1,7 @@
 <?php
 
 if (isset($_POST["username"])) {
-<<<<<<< HEAD
     //echo "hay POST";
-=======
-    echo "hay POST";
->>>>>>> modifalba
     try {
         include("conexiondb.php");
         //echo "conexion establecida";
@@ -29,10 +25,7 @@ if (isset($_POST["username"])) {
                 $_SESSION["usuario_nombre"] = $row["nombre"];
                 $_SESSION["usuario_apellidos"] = $row["apellidos"];
                 $_SESSION["usuario_id"] = $row["usuarios_id"];
-<<<<<<< HEAD
                 
-=======
->>>>>>> modifalba
                 header("Location: main.php");
             } else {
                 $error = "Usuario o contraseña incorrectos";
@@ -92,13 +85,7 @@ if (isset($_POST["username"])) {
     </form>
 
     <h2>¿No tienes una cuenta?</h2>
-<<<<<<< HEAD
     <p>Regístrate <a href="usuario_registro.php">aquí</a></p>
-=======
-    <p>Regístrate <a href="registro_usuario.php">aquí.</a></p>
-
-    <footer>X TASK APP © 2025 Todos los derechos reservados. </footer>
->>>>>>> modifalba
 </body>
 
 </html>
