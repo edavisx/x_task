@@ -58,5 +58,7 @@ if(isset($_GET["respuesta"])) {
             echo "<h2 style='background-color:red'>" . $error . "</h2>";
     }
 
+    ?>
+    
 </body>
 </html>
