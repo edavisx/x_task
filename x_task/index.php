@@ -1,44 +1,25 @@
 <?php
-
 if (isset($_POST["username"])) {
-<<<<<<< HEAD
-    //echo "hay POST";
-=======
-    echo "hay POST";
->>>>>>> modifalba
     try {
         include("conexiondb.php");
-        //echo "conexion establecida";
         $username = $_POST["username"];
         $password = $_POST["password"];
-        $sql = "SELECT * FROM usuarios WHERE username = :username";
+        $sql = "SELECT * FROM usuarios WHERE nombre = :username";
         $stm = $conexion->prepare($sql);
         $stm->bindParam(":username", $username);
         $stm->execute();
         $row = $stm->fetch(PDO::FETCH_ASSOC);
         if ($row) {
-            //echo "<h2> Usuario encontrado </h2>";
-            //echo "<h2> Usuario: " . $row["nombre"] . "</h2>";
-            // echo "<h2> Contraseña: " . $row["password"] . "</h2>";
-            // echo "<h2> Contraseña encriptada: " . $row["password_encriptado"] . "</h2>";
             //if (password_verify($password, $row["password"])) {
             if (password_verify($password, $row["password_encriptado"])) {
                 session_start();
-                
                 $_SESSION["username"] = $username;
-                $_SESSION["usuario_nombre"] = $row["nombre"];
-                $_SESSION["usuario_apellidos"] = $row["apellidos"];
-                $_SESSION["usuario_id"] = $row["usuarios_id"];
-<<<<<<< HEAD
-                
-=======
->>>>>>> modifalba
-                header("Location: main.php");
+                header("Location: tienda");
             } else {
                 $error = "Usuario o contraseña incorrectos";
             }
         } else {
-            $error = "Usuario o contraseña incorrectos...";
+            $error = "Usuario o contraseña incorrectos";
         }
     } catch (Exception $e) {
         
@@ -53,7 +34,7 @@ if (isset($_POST["username"])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -64,7 +45,7 @@ if (isset($_POST["username"])) {
 
 <body>
     
-    <h1>GESTIÓN DE TAREAS X TASK</h1>
+    <h1>BIENVENIDO A LA WEB DE TAREAS</h1>
 
     <p>En esta web podrás realizar las siguientes tareas:</p>
     <ul>
@@ -74,17 +55,16 @@ if (isset($_POST["username"])) {
         <li>Marcar tareas como completadas</li>
     </ul>
 
-    <p>Para poder trabajar con las tareas, por favor inicie sesión</p>
+    <p>Para poder realizar estas tareas, por favor inicie sesión</p>
 
     
-    <form action="" method="post">
+    <form action="registro_usuario.php" method="post">
         <h1>Iniciar sesión</h1>
         <label for="username">Nombre de usuario</label>
-        <input type="text" name="username" id="" required placeholder="Username">
+        <input type="text" name="username" id="username" required placeholder="Username">
         <label for="password">Contraseña</label>
-        <input type="password" name="password" id="" required placeholder="Password">
+        <input type="password" name="password" id="password" required placeholder="Password">
         <input type="submit" value="Iniciar sesión">
-        
         <?php if (isset($error)) {
             echo "<h2 style='background-color:red'>" . $error . "</h2>";
         }
@@ -92,13 +72,12 @@ if (isset($_POST["username"])) {
     </form>
 
     <h2>¿No tienes una cuenta?</h2>
-<<<<<<< HEAD
-    <p>Regístrate <a href="usuario_registro.php">aquí</a></p>
-=======
-    <p>Regístrate <a href="registro_usuario.php">aquí.</a></p>
+    <p>Regístrate <a href="registro_usuario.php">aquí</a></p>
+    
 
-    <footer>X TASK APP © 2025 Todos los derechos reservados. </footer>
->>>>>>> modifalba
+
 </body>
+
+
 
 </html>
