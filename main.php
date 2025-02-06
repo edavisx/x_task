@@ -1,21 +1,19 @@
 <?php 
 session_start();
-// echo $_SESSION["username"];
-// echo "<br>";
-// echo $_SESSION["usuario_nombre"];
-// echo "<br>";
-// echo $_SESSION["usuario_apellidos"];
-// echo "<br>";
-// echo $_SESSION["usuario_id"];
-// echo "<br>";
 
 if (! isset($_SESSION["username"])) {
     header("Location: index.php");
 }
 include("conexiondb.php");
-$usuario_ID = $_SESSION['usuario_id'];
-$sql = "SELECT * from tareas WHERE usuarios_id=" . $usuario_ID . ";";
-$result = $conexion->query($sql);
+try{
+    $usuario_ID = $_SESSION['usuario_id'];
+    $sql = "SELECT * from tareas WHERE usuarios_id=" . $usuario_ID . ";";
+    $result = $conexion->query($sql);
+} 
+catch (Exception $e) {
+            $error = "ERROR. <br>" . $e->getMessage();
+}
+
 
 ?>
 
@@ -32,52 +30,73 @@ $result = $conexion->query($sql);
 
 <body>
     
-    <h1>usuario: 
+    <h1>usuario:  
         <?php   echo $_SESSION["usuario_nombre"] . " " . $_SESSION["usuario_apellidos"];
         ?>
     </h1>
+    <p><button type="button" class="boton01" onclick="window.location.href='usuario_editar.php';">editar datos de usuario</button>
+    </p>
+    <p><button type="button" class="boton02" onclick="window.location.href='usuario_logout.php';">cerrar cesión</button>
+    </p>    
+    <p><button type="button" class="boton03" onclick="window.location.href='tarea_nueva.php';">crear nueva tarea</button>
+    </p>
     
     <section class="contenedorPrincipal">
-            <h3>Listado incidencias</h3>
-            <div class="incidencias">
-                <form action="editar_usuario.php" method="post" id="formIncidencias">
-                    <label for="fecha">Fecha</label>
-                    <input type="date" name="fecha" id="fecha" value="">
-                    <label for="descripcion">Descripcion</label>
-                    <input required type="text" name="descripcion" id="descripcion">
-                    <button>Enviar</button>
-                </form>
-            </div>
+            <h3>Listado tareas del usuario con ID <?php echo $_SESSION['usuario_id'] ?> </h3>
+    
             <div class="lista">
                 <table id="tablaIncidencias">
                     <thead>
-                        <th>Id</th>
-                        <th>fecha</th>
+                        <th>fecha de creación (hora servidor)</th>
                         <th>Título de la tarea</th>
+                        <th>estado</th>
+                        <th>ID de la Tarea</th>
                         <th>Operaciones</th>
                     </thead>
-                    <tbody id="tbodyIncidencias">
+                    <tbody id="tbodyTareas">
+
                         <?php
                         while ($row = $result->fetch()) {
-                            echo "<tr>
-                            <td>".$row['usuarios_id']."</td>
-                            <td>".$row['fecha_creacion']."</td>
-                            <td>".$row['titulo']."</td>
-                            <td> ver | editar | eliminar</td>
-                            <td>
-                                <a href='borrar_incidencia.php?idincidencia=".$row['tareas_id']."'><i class='fa-solid fa-trash'></i></a>
-                                <a href='editar_incidencia.php?idincidencia=".$row['tareas_id']."'<i class='fa-solid fa-pen-to-square'></i></a>
+                            if ($row['estado'] == null) 
+                                {$estado = 'Terminado';} else {$estado = 'En proceso';}
+                            echo "<tr>                            
+                            <td>" . 
+                                $row['fecha_creacion'] .
+                            "</td>
+                            <td>" . 
+                                $row['titulo'] .
+                            "</td>" . 
+                            "<td>". 
+                                $estado .
+                            "</td>" . 
+                            "<td>". 
+                                $row['tareas_id'] .
+                            "</td>" .
+                            "<td> 
+                                <a href='tarea_ver.php?tarea_id="
+                                    . $row['tareas_id']."'>ver</a> 
+                                | 
+                                <a href='tarea_editar.php?tarea_id="
+                                    . $row['tareas_id']."'>editar</a>
+                                | 
+                                <a href='tarea_borrar.php?tarea_id="
+                                    . $row['tareas_id']."'>eliminar</a>
                             </td>
                             </tr>";
 
                         }
                         ?>
                         
-
+                    </tbody>
 
                 </table>
             </div>
         </section>
+
+    <?php if (isset($error)) {
+        echo "<h2 style='background-color:red'>" . $error . "</h2>";
+    }
+    ?>
     
 </body>
 

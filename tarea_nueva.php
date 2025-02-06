@@ -3,40 +3,27 @@ session_start();
 
 if (isset($_POST["titulo"])) {
     try {
-            echo "entra en el if";
             include("conexiondb.php");
-            echo "conexion establecida";
             
             $titulo = $_POST["titulo"];
-            echo $titulo;
-            echo "<br>";
-            $decripcion = $_POST["descripcion"];
-            echo $decripcion;
-            echo "<br>";
             $usuarios_id = $_SESSION['usuario_id'];
-            echo $usuarios_id;
-            echo "<br>";
             $estado = 1;
-            echo $estado;
-            echo "<br>";
-            //$fecha_local = $_SESSION['fecha_local'];
             $sql = "INSERT INTO tareas (titulo,descripcion,usuarios_id,estado) 
                     VALUES (:t,:d,:u,:e)";
-                   // INSERT INTO Tareas (usuarios_id, titulo, descripcion) VALUES (32, 'ttttt', 'dddd');
-            $stm = $conexion->prepare($sql);
             
+            $stm = $conexion->prepare($sql);
+          
             $stm->bindParam(":t", $titulo);
-            $stm->bindParam(":d", $descripcion);
+            $stm->bindParam(":d", $_POST["descripcion"]);
             $stm->bindParam(":u", $usuarios_id);
             $stm->bindParam(":e", $estado);
-            //$stm->bindParam(":f", $fecha_local);
+ 
             $stm->execute();
-            echo "tarea guardada";
+ 
             $conexion = null;
-            //header("Location: main.php");
+            header("Location: main.php");
         } catch (Exception $e) {
             $error = "ERROR. <br>" . $e->getMessage();
-            echo $error;
         }
     }
 
@@ -55,7 +42,7 @@ if (isset($_POST["titulo"])) {
    
 </head>
 <body>
-    <h2>Formulario de Tarea</h2>
+    <h2>NUEVA TAREA</h2>
     <form method="POST" action="" id="miFormulario">
         <div>
             <label for="titulo">Título de la Tarea (máx. 133 caracteres):</label>
@@ -68,12 +55,19 @@ if (isset($_POST["titulo"])) {
         <div>
             <input type="submit" value="Guardar Tarea">
         </div>
+
+        <?php if (isset($error)) {
+            echo "<h2 style='background-color:red'>" . $error . "</h2>";
+        }
+
+        ?>
+
     </form>
 
-<footer>
-    <p> <button onclick="window.location.href='main.php';">CANCELAR</button> </p>
-</footer>
 
+
+<button type="button" class="cancel" onclick="window.location.href='main.php';">Cancelar</button>
+  
 </body>
 </html>
 

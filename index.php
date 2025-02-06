@@ -1,6 +1,7 @@
 <?php
+
 if (isset($_POST["username"])) {
-    echo "hay POST";
+    //echo "hay POST";
     try {
         include("conexiondb.php");
         //echo "conexion establecida";
@@ -19,10 +20,12 @@ if (isset($_POST["username"])) {
             //if (password_verify($password, $row["password"])) {
             if (password_verify($password, $row["password_encriptado"])) {
                 session_start();
+                
                 $_SESSION["username"] = $username;
                 $_SESSION["usuario_nombre"] = $row["nombre"];
                 $_SESSION["usuario_apellidos"] = $row["apellidos"];
                 $_SESSION["usuario_id"] = $row["usuarios_id"];
+                
                 header("Location: main.php");
             } else {
                 $error = "Usuario o contraseña incorrectos";
@@ -74,6 +77,7 @@ if (isset($_POST["username"])) {
         <label for="password">Contraseña</label>
         <input type="password" name="password" id="" required placeholder="Password">
         <input type="submit" value="Iniciar sesión">
+        
         <?php if (isset($error)) {
             echo "<h2 style='background-color:red'>" . $error . "</h2>";
         }
@@ -81,7 +85,7 @@ if (isset($_POST["username"])) {
     </form>
 
     <h2>¿No tienes una cuenta?</h2>
-    <p>Regístrate <a href="registro_usuario.php">aquí</a></p>
+    <p>Regístrate <a href="usuario_registro.php">aquí</a></p>
 </body>
 
 
