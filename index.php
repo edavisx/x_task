@@ -54,7 +54,7 @@ if (isset($_POST["username"])) {
 
 <body>
     
-    <h1>GESTIÓN DE TAREAS X TASK</h1> <img src="imagen\logo.png" alt=""   width="120" height="100" flexdirection="row">
+    <h1>GESTIÓN DE TAREAS X TASK</h1>
 
     <p>En esta web podrás realizar las siguientes tareas:</p>
     <ul>

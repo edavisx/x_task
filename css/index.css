@@ -18,7 +18,8 @@ body {
 
 /* Estilo para encabezados */
 h1, h2 {
-    color: #2c3e50;
+    color: white; /* Cambia el color del texto si es necesario */
+    font-size: 36px;
 }
 
 h1 {
@@ -126,5 +127,17 @@ footer {
 h3 {
     font-size: 22px;
     margin-top: 30px;
+}
+
+header {
+    background-image: url('imagen/logo.png'); /* Ruta de tu logo */
+    background-size: contain; /* Esto asegura que el logo se ajuste dentro del fondo */
+    background-repeat: no-repeat; /* Evita que el logo se repita */
+    background-position: center; /* Centra el logo */
+    height: 150px; /* Ajusta la altura del header según el tamaño de tu logo */
+    text-align: center; /* Centra el texto dentro del header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
