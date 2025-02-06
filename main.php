@@ -25,20 +25,20 @@ catch (Exception $e) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>web de TAREAS</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
     
-    <h1>usuario:  
+    <h1>Usuario:  
         <?php   echo $_SESSION["usuario_nombre"] . " " . $_SESSION["usuario_apellidos"];
         ?>
     </h1>
-    <p><button type="button" class="boton01" onclick="window.location.href='usuario_editar.php';">editar datos de usuario</button>
+    <p><button type="button" class="boton01" onclick="window.location.href='usuario_editar.php';">Editar datos de usuario</button>
     </p>
-    <p><button type="button" class="boton02" onclick="window.location.href='usuario_logout.php';">cerrar cesión</button>
+    <p><button type="button" class="boton02" onclick="window.location.href='usuario_logout.php';">Cerrar cesión</button>
     </p>    
-    <p><button type="button" class="boton03" onclick="window.location.href='tarea_nueva.php';">crear nueva tarea</button>
+    <p><button type="button" class="boton03" onclick="window.location.href='tarea_nueva.php';">Crear nueva tarea</button>
     </p>
     
     <section class="contenedorPrincipal">
@@ -47,9 +47,9 @@ catch (Exception $e) {
             <div class="lista">
                 <table id="tablaIncidencias">
                     <thead>
-                        <th>fecha de creación (hora servidor)</th>
+                        <th>Fecha de creación (hora servidor)</th>
                         <th>Título de la tarea</th>
-                        <th>estado</th>
+                        <th>Estado</th>
                         <th>ID de la Tarea</th>
                         <th>Operaciones</th>
                     </thead>
@@ -97,7 +97,7 @@ catch (Exception $e) {
         echo "<h2 style='background-color:red'>" . $error . "</h2>";
     }
     ?>
-    
+    <footer>X TASK APP © 2025 Todos los derechos reservados.</footer>
 </body>
 
 

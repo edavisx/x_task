@@ -57,9 +57,9 @@ if (isset($_POST["username"])) {
 
 <body>
     
-    <h1>GESTIÓN DE TAREAS X TASK</h1>
+    <h1>BIENVENIDO A GESTIÓN DE TAREAS X TASK<img src="imagen\logo.png" alt="" class="logo" srcset=""></h1>
 
-    <p>En esta web podrás realizar las siguientes tareas:</p>
+    <p>En esta web tendrás el control de todas tus tareas diarias:</p>
     <ul>
         <li>Crear tareas</li>
         <li>Editar tareas</li>
@@ -84,8 +84,11 @@ if (isset($_POST["username"])) {
         ?>
     </form>
 
-    <h2>¿No tienes una cuenta?</h2>
-    <p>Regístrate <a href="usuario_registro.php">aquí</a></p>
+    <p>¿No tienes una cuenta?</p>
+        <h2>Regístrate<a href="usuario_registro.php">aquí.</a></h2>
+
+
+    <footer>X TASK APP © 2025 Todos los derechos reservados.</footer>
 </body>
 
 </html>

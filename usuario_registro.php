@@ -55,8 +55,8 @@ if (isset($_POST["apellido01_usuario"])) {
         <input type="text" name="nombre_usuario" id="id_01" required placeholder="Nombre(s)" autocomplete="off">
         <input type="text" name="apellido01_usuario" id="id_02" required placeholder="Primer apellido" autocomplete="off">
         <input type="text" name="apellido02_usuario" id="" placeholder="Segundo apellido">
-        <input type="text" name="username" id="" required placeholder="ingrese un nombre de usuario">
-        <input type="password" name="password" id="pass" required placeholder="password">
+        <input type="text" name="username" id="" required placeholder="Ingrese un nombre de usuario">
+        <input type="password" name="password" id="pass" required placeholder="Password">
         <label for="password">Introduce de nuevo la Password</label>
         <input  type="password" name="repassword" id="id_03">
         <span id="msg">*Las contraseñas deben ser iguales</span>
@@ -72,7 +72,8 @@ if (isset($_POST["apellido01_usuario"])) {
 
 
 <footer>
-    <p> <a href="index.php">HOME</a> </p>
+    <p> <a class="home"href="index.php">HOME</a></p>
+    <p>X TASK APP © 2025 Todos los derechos reservados.</p>
 </footer>
 
 </body>
